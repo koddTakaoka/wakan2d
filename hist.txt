@@ -1,0 +1,190 @@
+koba@linux-umyn:~/wakan2> cat > test.txt
+test20170611
+koba@linux-umyn:~/wakan2> git add  test.txt 
+koba@linux-umyn:~/wakan2> git diff
+koba@linux-umyn:~/wakan2> git commit
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+
+	koba@linux-umyn:~/wakan2> git config --global user.email "koba.takaoka@zspec.net"
+	koba@linux-umyn:~/wakan2> git config --global user.name "binKobayashi"
+	koba@linux-umyn:~/wakan2> git commit
+	Aborting commit due to empty commit message.
+	koba@linux-umyn:~/wakan2> git commit
+	Aborting commit due to empty commit message.
+	koba@linux-umyn:~/wakan2> git commit -m "test commit"
+	[master (root-commit) 82cd931] test commit
+	 1 file changed, 1 insertion(+)
+	  create mode 100644 test.txt
+	  koba@linux-umyn:~/wakan2> git log
+	  koba@linux-umyn:~/wakan2> git remote add origin git@github.com:binKobayashi/wakan2.git
+	  fatal: remote origin already exists.
+	  koba@linux-umyn:~/wakan2> git push -u origin master
+	  The authenticity of host 'github.com (192.30.255.112)' can't be established.
+	  RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48 [MD5].
+	  Are you sure you want to continue connecting (yes/no)? yes
+	  Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+	  Permission denied (publickey).
+	  fatal: Could not read from remote repository.
+
+	  Please make sure you have the correct access rights
+	  and the repository exists.
+	  koba@linux-umyn:~/wakan2> cd
+	  koba@linux-umyn:~> ssh-keygen -t rsa -b 4096 -C "key 4 git"
+	  Generating public/private rsa key pair.
+	  Enter file in which to save the key (/home/koba/.ssh/id_rsa): 
+	  Enter passphrase (empty for no passphrase): 
+	  Enter same passphrase again: 
+	  Your identification has been saved in /home/koba/.ssh/id_rsa.
+	  Your public key has been saved in /home/koba/.ssh/id_rsa.pub.
+	  The key fingerprint is:
+	  db:8a:15:04:8d:df:2a:ad:bb:4f:33:4a:72:55:90:ec [MD5] key 4 git
+	  The key's randomart image is:
+	  +--[ RSA 4096]----+
+	  |      .+..       |
+	  |      ..+.       |
+	  |       o...      |
+	  |       .E..      |
+	  |       .S.       |
+	  |      ..o+       |
+	  |    . oo* .      |
+	  |     +.= +       |
+	  |      =+o        |
+	  +--[MD5]----------+
+	  koba@linux-umyn:~> ls -la .ssh/
+	  合計 20
+	  drwx------  2 koba users   57  6月 11 08:53 .
+	  drwxr-xr-x 81 koba users 4096  6月 11 08:38 ..
+	  -rw-------  1 koba users 3326  6月 11 08:53 id_rsa
+	  -rw-r--r--  1 koba users  735  6月 11 08:53 id_rsa.pub
+	  -rw-r--r--  1 koba users 1551  6月 11 08:46 known_hosts
+	  Connection to 202.251.158.42 closed.
+
+	  koba@linux-umyn:~> cd .ssh/
+	  koba@linux-umyn:~/.ssh> ls -la
+	  合計 20
+	  drwx------  2 koba users   57  6月 11 08:53 .
+	  drwxr-xr-x 81 koba users 4096  6月 11 08:38 ..
+	  -rw-------  1 koba users 3326  6月 11 08:53 id_rsa
+	  -rw-r--r--  1 koba users  735  6月 11 08:53 id_rsa.pub
+	  -rw-r--r--  1 koba users 1551  6月 11 08:46 known_hosts
+	  koba@linux-umyn:~/.ssh> chmod 600 id_rsa.pub 
+	  koba@linux-umyn:~/.ssh> vi config
+	  koba@linux-umyn:~/.ssh> vi config
+	  koba@linux-umyn:~/.ssh> ssh github
+	  Permission denied (publickey).
+	  koba@linux-umyn:~/.ssh> cat id_rsa.pub 
+	  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6qfhETtVuPGQL0pOgk3wzX3EWzATUeltLEsouWkVAsqr1j5JiTFjpiPaou1dnJyDk+jgNQzYK4p8Lwz+KFPTf+W5L1i4gg9EbGieKXc/2eCI+3+ChubhsCHyAIxVdKz/69daEFA1F3uBrMhhgh6H3FYL8bt8GNJt4MTZR4YWKUICLwbaa5Vc/m0z3HOhoK6kJihbOvmC7Vhp0KOr7e8KLHpiWHcU53H5XSuiCGI+r1UrhZdAk6UyHWZye318iHBDlGNMOFHVbUPhQ7OHTwXKptOKnr8KhdADzYBUM0ioRhaNQXTGAgIsO4cfTU7Mv2c9Oxj7HVQA9R5W5cr2kHIMBhGP50WsDiJULhdzNsQy5p4qbe1OsPbqoD8yABZNdq+FZkbF5Y93u8oqIEjX0oocnLPW5Bi6kbNBlZdULphJpIZdHmavjcZsFRk+44trstmsrk0awOvretTC1gy3omX/1pEa+uY2hcKN8zAEkCwwJ/Q9QNIb/Nk2v4PYrAIr7++o1ug1TPssKHQ9LF4pEbqnbsgM+5IevT5zbeN8Za2KTidAjGZD9lqwEMQVendDcnb2DbWS1SedVi5MTlPi4MHjxKDZyGDBm3On8z/XxqMwEv5YkuZpAJ3/hO+HUScw8dfC0jlTDAJq7eXpcO+xytrphH1QF6ZMB7nCvAja0/QpEjw== key 4 git
+	  koba@linux-umyn:~/.ssh> cd
+	  koba@linux-umyn:~> cd wakan2
+	  koba@linux-umyn:~/wakan2> ls
+	  test.txt
+
+koba@linux-umyn:~/wakan2> git push -u origin master
+	  Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+	  Permission denied (publickey).
+	  fatal: Could not read from remote repository.
+
+	  Please make sure you have the correct access rights
+	  and the repository exists.
+	  koba@linux-umyn:~/wakan2> git push -u origin master
+	  Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+	  Counting objects: 3, done.
+	  Writing objects: 100% (3/3), 227 bytes | 0 bytes/s, done.
+	  Total 3 (delta 0), reused 0 (delta 0)
+	  To git@github.com:koddTakaoka/wakan2d
+	   * [new branch]      master -> master
+	   Branch master set up to track remote branch master from origin.
+	   koba@linux-umyn:~/wakan2> vi test.txt 
+	   koba@linux-umyn:~/wakan2> git commit -m "2nd"
+	   On branch master
+	   Your branch is up-to-date with 'origin/master'.
+	   Changes not staged for commit:
+	           modified:   test.txt
+
+			   no changes added to commit
+			   koba@linux-umyn:~/wakan2> git add test.txt 
+			   koba@linux-umyn:~/wakan2> git commit -m "2nd"
+			   [master af93960] 2nd
+			    1 file changed, 2 insertions(+)
+				koba@linux-umyn:~/wakan2> git log
+				koba@linux-umyn:~/wakan2> git push -u origin master
+				Warning: Permanently added the RSA host key for IP address '192.30.255.113' to the list of known hosts.
+				Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+				Counting objects: 3, done.
+				Writing objects: 100% (3/3), 285 bytes | 0 bytes/s, done.
+				Total 3 (delta 0), reused 0 (delta 0)
+				To git@github.com:koddTakaoka/wakan2d
+				   82cd931..af93960  master -> master
+				   Branch master set up to track remote branch master from origin.
+
+
+http://mzgkworks.com/post/ssh-connction-to-github/
+https://git-scm.com/book/ja/v1/Git-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-SSH-%E5%85%AC%E9%96%8B%E9%8D%B5%E3%81%AE%E4%BD%9C%E6%88%90
+
+
+#2017.6.12
+koba@linux-umyn:~/target_prediction> git remote remove origin 
+koba@linux-umyn:~/target_prediction> git remote add origin git@github.com:koddTakaoka/target_prediction.git
+koba@linux-umyn:~/target_prediction> git push -u origin master
+Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 286 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:koddTakaoka/target_prediction.git
+ * [new branch]      master -> master
+ Branch master set up to track remote branch master from origin.
+ koba@linux-umyn:~/target_prediction> 
+
+
+[koba@ip-172-31-51-41 hints]$ git remote remove origin
+[koba@ip-172-31-51-41 hints]$ git remote add origin git@github.com:koddTakaoka/hints.git
+[koba@ip-172-31-51-41 hints]$ git push -u origin master
+Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[koba@ip-172-31-51-41 hints]$ git push -u origin master
+Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[koba@ip-172-31-51-41 hints]$ git push -u origin master
+Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 4.06 KiB | 0 bytes/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To git@github.com:koddTakaoka/hints.git
+ * [new branch]      master -> master
+ Branch master set up to track remote branch master from origin.
+ [koba@ip-172-31-51-41 hints]$ 
+
+#2017.6.14
+
+koba@linux-umyn:~/python2017/lib1> git remote remove origin
+koba@linux-umyn:~/python2017/lib1> git remote add origin git@github.com:koddTakaoka/lib1.git
+koba@linux-umyn:~/python2017/lib1> git push -u origin master
+Enter passphrase for key '/home/koba/.ssh/id_rsa': 
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.17 KiB | 0 bytes/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To git@github.com:koddTakaoka/lib1.git
+ * [new branch]      master -> master
+ Branch master set up to track remote branch master from origin.
+ koba@linux-umyn:~/python2017/lib1> 
+
